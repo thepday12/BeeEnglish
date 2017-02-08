@@ -38,10 +38,10 @@ public class GrammarDeserializer implements JsonDeserializer<GrammarObject> {
             RealmList<SubDetailObject> subDetailObjects = new RealmList<>();
             for(int j=0;j<jsonDetailData.size();j++){
                 final JsonObject jsonDetail = jsonDetailData.get(j).getAsJsonObject();
-                subDetailObjects.add(new SubDetailObject(jsonDetail.get("id").getAsInt(),jsonDetail.get("name").getAsString(),jsonDetail.get("detail").getAsString(),jsonDetail.get("link").getAsString(),jsonDetail.get("test_id").getAsLong()));
+                subDetailObjects.add(new SubDetailObject(jsonDetail.get("name").getAsString(),jsonDetail.get("detail").getAsString(),jsonDetail.get("link").getAsString()));
             }
 
-            subObjects.add(new SubObject(subData.get("id").getAsInt(),subData.get("name").getAsString(), subDetailObjects));
+            subObjects.add(new SubObject(subData.get("name").getAsString(), subDetailObjects));
         }
         //The deserialisation code is missing
 

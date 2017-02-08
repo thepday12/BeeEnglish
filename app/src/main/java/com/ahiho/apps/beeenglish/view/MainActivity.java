@@ -1,7 +1,6 @@
 package com.ahiho.apps.beeenglish.view;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,14 +15,11 @@ import com.ahiho.apps.beeenglish.model.ResponseData;
 import com.ahiho.apps.beeenglish.util.Identity;
 import com.ahiho.apps.beeenglish.util.MyConnection;
 import com.ahiho.apps.beeenglish.util.UtilSharedPreferences;
-import com.ahiho.apps.beeenglish.util.UtilString;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -37,7 +33,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,7 +63,7 @@ public class MainActivity extends BaseActivity implements GoogleApiClient.OnConn
         init();
 //        startActivity(new Intent(MainActivity.this,TestVocabularyActivity.class));
 //new DownloadFile().execute();
-        long accessTime = mUtilSharedPreferences.getAccessTokenExpired();
+        long accessTime = mUtilSharedPreferences.getAccessTokenExpired()*1000;
         long time = accessTime - System.currentTimeMillis();
         if (time <= 0) {
             try {

@@ -21,7 +21,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -169,7 +168,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         rvRecent = (RecyclerView) findViewById(R.id.rvRecent);
         rvUsually = (RecyclerView) findViewById(R.id.rvUsually);
 
-        rvRecent.setLayoutManager(new GridLayoutManager(HomeActivity.this, 3));
+        rvRecent.setLayoutManager(new GridLayoutManager(HomeActivity.this, 2));
         rvUsually.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
         initData();
@@ -191,7 +190,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         functionObjects.add(new FunctionObject(Identity.FUN_ID_GRAMMAR, R.drawable.ic_dashboard_grammar, getString(R.string.fun_grammar)));
         functionObjects.add(new FunctionObject(Identity.FUN_ID_COMMUNICATE, R.drawable.ic_dashboard_communicate, getString(R.string.fun_communicate)));
         functionObjects.add(new FunctionObject(Identity.FUN_ID_VOCABULARY, R.drawable.ic_dashboard_vocabulary, getString(R.string.fun_vocabulary)));
-        rvRecent.setAdapter(new RecyclerCategoryAdapter(functionObjects, true));
+        rvRecent.setAdapter(new RecyclerCategoryAdapter(functionObjects, 2, true));
 
         updateUsually();
 
@@ -220,7 +219,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 }
             }
             if (objectUsually.size() > 0)
-                rvUsually.setAdapter(new RecyclerCategoryAdapter(objectUsually, false));
+                rvUsually.setAdapter(new RecyclerCategoryAdapter(objectUsually, 3, false));
         }
     }
 

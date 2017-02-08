@@ -1,7 +1,6 @@
 package com.ahiho.apps.beeenglish.model.realm_object;
 
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by theptokim on 12/12/16.
@@ -12,16 +11,16 @@ public class SubDetailObject extends RealmObject {
     private String name;
     private String detail;
     private String link;
-    private long testId;
+//    private long testId;
 
     public SubDetailObject() {
     }
 
-    public SubDetailObject(int id, String name, String detail, String link, long testId) {
+    public SubDetailObject(String name, String detail, String link) {
         this.name = name;
         this.detail = detail;
         this.link = link;
-        this.testId=testId;
+//        this.testId=testId;
     }
 
 
@@ -50,11 +49,11 @@ public class SubDetailObject extends RealmObject {
         this.link = link;
     }
 
-    public long getTestId() {
-        return testId;
-    }
-
-    public void setTestId(long testId) {
-        this.testId = testId;
-    }
+//    public long getTestId() {
+//        return testId;
+//    }
+//
+//    public void setTestId(long testId) {
+//        this.testId = testId;
+//    }
 }

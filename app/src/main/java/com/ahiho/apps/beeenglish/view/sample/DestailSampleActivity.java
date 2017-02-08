@@ -31,7 +31,14 @@ public class DestailSampleActivity extends BaseActivity  {
         String name = intent.getStringExtra(Identity.EXTRA_SAMPLE_NAME);
         setTitle(name);
         if(input!=null&&!input.isEmpty()) {
-            String text = new UtilString().htmlText(input);
+            String cssString = "<style rel=\"stylesheet\" type=\"text/css\">pre {\n" +
+                    " white-space: pre-wrap;       /* css-3 */\n" +
+                    " white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */\n" +
+                    " white-space: -pre-wrap;      /* Opera 4-6 */\n" +
+                    " white-space: -o-pre-wrap;    /* Opera 7 */\n" +
+                    " word-wrap: break-word;       /* Internet Explorer 5.5+ */\n" +
+                    "}</style>";
+            String text = new UtilString().htmlText(cssString+input);
             wvSample.loadDataWithBaseURL(null, text, "text/html", "utf-8", null);
         }
     }

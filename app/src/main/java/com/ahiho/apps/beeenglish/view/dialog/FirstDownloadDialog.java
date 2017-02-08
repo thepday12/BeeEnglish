@@ -21,15 +21,13 @@ import android.widget.Toast;
 
 import com.ahiho.apps.beeenglish.R;
 import com.ahiho.apps.beeenglish.controller.RealmController;
-import com.ahiho.apps.beeenglish.model.ResponseData;
 import com.ahiho.apps.beeenglish.model.realm_object.CommunicationObject;
 import com.ahiho.apps.beeenglish.model.realm_object.DictionaryObject;
 import com.ahiho.apps.beeenglish.model.realm_object.GrammarObject;
+import com.ahiho.apps.beeenglish.model.realm_object.SampleObject;
 import com.ahiho.apps.beeenglish.model.realm_object.VocabularyObject;
 import com.ahiho.apps.beeenglish.model.realm_object.WordObject;
-import com.ahiho.apps.beeenglish.model.realm_object.SampleObject;
 import com.ahiho.apps.beeenglish.util.Identity;
-import com.ahiho.apps.beeenglish.util.MyConnection;
 import com.ahiho.apps.beeenglish.util.MyDownloadManager;
 import com.ahiho.apps.beeenglish.util.MyFile;
 import com.ahiho.apps.beeenglish.util.UtilSharedPreferences;
@@ -47,7 +45,6 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -178,7 +175,7 @@ public class FirstDownloadDialog extends BaseActivity {
         pbProgress = (ProgressBar) findViewById(R.id.pbProgress);
         pbTotal = (ProgressBar) findViewById(R.id.pbTotal);
         btOk = (Button) findViewById(R.id.btOk);
-        btCancel = (Button) findViewById(R.id.btCancel);
+        btCancel = (Button) findViewById(R.id.btCancel); btCancel.setVisibility(View.GONE); // Disable cancel button by v2tmobile
 
         pbProgress.setMax(100);
         pbTotal.setMax(maxDownload);

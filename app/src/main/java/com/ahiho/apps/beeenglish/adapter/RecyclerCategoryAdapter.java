@@ -6,7 +6,6 @@ package com.ahiho.apps.beeenglish.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.widget.CardView;
@@ -28,9 +27,9 @@ import com.ahiho.apps.beeenglish.util.UtilSharedPreferences;
 import com.ahiho.apps.beeenglish.view.BooksActivity;
 import com.ahiho.apps.beeenglish.view.DictionaryActivity;
 import com.ahiho.apps.beeenglish.view.GrammarActivity;
+import com.ahiho.apps.beeenglish.view.VocabularyActivity;
 import com.ahiho.apps.beeenglish.view.communication.CommunicationActivity;
 import com.ahiho.apps.beeenglish.view.sample.SampleActivity;
-import com.ahiho.apps.beeenglish.view.VocabularyActivity;
 
 import java.util.List;
 
@@ -44,12 +43,14 @@ public class RecyclerCategoryAdapter extends RecyclerView
     private Context mContext;
     private boolean mIsRecent;
     private int screenWidth;
+    private int mColCount;
     private UtilSharedPreferences mUtilSharedPreferences;
 
 
-    public RecyclerCategoryAdapter(List<FunctionObject> dataset, boolean isRecent) {
+    public RecyclerCategoryAdapter(List<FunctionObject> dataset, int colCount, boolean isRecent) {
         mDataset = dataset;
         mIsRecent = isRecent;
+        mColCount = colCount;
     }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder {
@@ -84,7 +85,7 @@ public class RecyclerCategoryAdapter extends RecyclerView
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        screenWidth = (size.x - paddingSub) / 3;
+        screenWidth = (size.x - paddingSub) / mColCount;
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;
     }

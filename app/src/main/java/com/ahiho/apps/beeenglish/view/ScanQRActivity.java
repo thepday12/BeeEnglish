@@ -30,15 +30,11 @@ import com.ahiho.apps.beeenglish.model.ResponseData;
 import com.ahiho.apps.beeenglish.util.Identity;
 import com.ahiho.apps.beeenglish.util.MyConnection;
 import com.ahiho.apps.beeenglish.util.UtilSharedPreferences;
-import com.ahiho.apps.beeenglish.util.UtilString;
 import com.google.zxing.BinaryBitmap;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.NotFoundException;
 import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.multi.qrcode.QRCodeMultiReader;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -286,7 +282,7 @@ public class ScanQRActivity extends BaseActivity implements ZXingScannerView.Res
                 if (responseData.isResponseState()) {
                     try {
                         JSONObject jsonObject = new JSONObject(responseData.getResponseData());
-                        if (jsonObject.getBoolean("success")) {
+                        if (!jsonObject.isNull("success") && jsonObject.getBoolean("success")) {
                             isActive = true;
                             validCode();
                             String activeData =jsonObject.getString("data");
@@ -294,7 +290,7 @@ public class ScanQRActivity extends BaseActivity implements ZXingScannerView.Res
 //                            mUtilSharedPreferences.setTrialTimeExpired(UtilString.convertString2Date(jsonObjectActive.getString("expired_time")));
                             mUtilSharedPreferences.setActiveData(activeData);
                         } else {
-                            invalidCode(responseData.getResponseData());
+                            invalidCode(new JSONObject(responseData.getResponseData()).getJSONObject("error").getString("message"));
                         }
                     } catch (JSONException e) {
                         showToast(R.string.err_json_exception, Toast.LENGTH_LONG);

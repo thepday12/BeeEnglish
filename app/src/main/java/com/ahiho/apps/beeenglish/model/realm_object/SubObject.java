@@ -2,7 +2,6 @@ package com.ahiho.apps.beeenglish.model.realm_object;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by theptokim on 12/12/16.
@@ -19,7 +18,7 @@ public class SubObject extends RealmObject {
         this.name = name;
     }
 
-    public SubObject(int id, String name, RealmList<SubDetailObject> data) {
+    public SubObject(String name, RealmList<SubDetailObject> data) {
         this.name = name;
         this.data = data;
     }
